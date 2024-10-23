@@ -5,8 +5,12 @@
 using namespace std;
 using namespace cv;
 int main() {
+	Mat image = imread("./test.jpg");
 	BaseExercise* baseExercise = new BaseExercise();
-	baseExercise->showImge();
+
+	//baseExercise->showImage(image);
+	//baseExercise->testErode(image);
+	baseExercise->testBlur(image);
 
 	return 0;
 }
