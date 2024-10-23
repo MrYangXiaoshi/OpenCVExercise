@@ -18,5 +18,13 @@
     <ClCompile Include="MainSource.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="BaseExercise.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BaseExercise.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
