@@ -10,7 +10,8 @@ int main() {
 
 	//baseExercise->showImage(image);
 	//baseExercise->testErode(image);
-	baseExercise->testBlur(image);
+	//baseExercise->testBlur(image);
+	baseExercise->testCanny(image);
 
 	return 0;
 }

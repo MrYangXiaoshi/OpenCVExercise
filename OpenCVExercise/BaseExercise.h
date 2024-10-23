@@ -9,5 +9,6 @@ public:
 	int showImage(Mat image);
 	int testErode(Mat image);
 	int testBlur(Mat image);
+	int testCanny(Mat image);
 };
 
