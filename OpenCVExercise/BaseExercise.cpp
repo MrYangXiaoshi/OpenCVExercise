@@ -83,3 +83,58 @@ int BaseExercise::testCanny(Mat image)
 	imwrite("canny.jpg", edge);
 	waitKey(0);	// 等待任意按键按下，退出图片显示
 }
+
+int BaseExercise::testWindow(Mat image1, Mat image2)
+{
+	// Read images
+	Mat lena = image1;
+	Mat photo = image2;
+
+	// Create windows
+	namedWindow("Lena", WINDOW_NORMAL);
+	// Checking if Lena image has been loaded
+	if (!lena.data) {
+		cout << "Lena image missing!" << endl;
+		return -1;
+	}
+	namedWindow("Photo", WINDOW_AUTOSIZE);
+	if (!photo.data) {
+		cout << "Lena image missing!" << endl;
+		return -1;
+	}
+	// Move window
+	// moveWindow函数将窗口移动到桌面的任何区域
+	moveWindow("Lena", 10, 10);
+	moveWindow("Photo", 520, 10);
+
+	// show images
+	imshow("Lena", lena);
+	imshow("Photo", photo);
+
+	// Resize window, only non autosize
+	// resizeWindow函数将Lena窗口的大小调整为512像素，该函数有三个参
+	// 数：window name、width和height。
+	resizeWindow("Lena", 512, 512);
+
+	// wait for any key press
+	waitKey(0);
+
+	// Destroy the windows
+	destroyWindow("Lena");
+	destroyWindow("Photo");
+
+	// Create 10 windows
+	for (int i = 0; i < 10; i++)
+	{
+		ostringstream ss;
+		ss << "Photo " << i;
+		namedWindow(ss.str());
+		moveWindow(ss.str(), 20 * i, 20 * i);
+		imshow(ss.str(), photo);
+	}
+
+	waitKey(0);
+	// Destroy all windows
+	destroyAllWindows();
+	return 0;
+}
