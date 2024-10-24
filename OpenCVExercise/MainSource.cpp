@@ -13,7 +13,9 @@ int main() {
 	//baseExercise->testErode(image);
 	//baseExercise->testBlur(image);
 	//baseExercise->testCanny(image);
-	baseExercise->testWindow(image, image2);
+	//baseExercise->testWindow(image, image2);
+	//baseExercise->testVideoCapture();
+	baseExercise->testVideoAndCanny();
 
 	return 0;
 }

@@ -138,3 +138,51 @@ int BaseExercise::testWindow(Mat image1, Mat image2)
 	destroyAllWindows();
 	return 0;
 }
+
+int BaseExercise::testVideoCapture()
+{
+	VideoCapture capture("./mt03.mp4");	// 读入视频
+	//VideoCapture capture(0);	// 从摄像头读入视频
+	if (!capture.isOpened())	// 判断文件是否正确打开
+	{
+		std::cout << "video not exist";
+		return -1;
+	}
+
+	while (1) // 循环显示每一帧
+	{
+		Mat frame;	// 定义一个Mat 变量， 用于存储每一帧的图像
+		capture >> frame;	// 读取当前帧到 Mat 变量中 
+		imshow("读取视频", frame);	// 显示当前帧 
+		waitKey(1000);	// 延时 1000 ms
+	}
+	capture.release();	//释放资源
+	return 0;
+}
+
+int BaseExercise::testVideoAndCanny()
+{
+	VideoCapture capture("./mt03.mp4");	// 读入视频
+	//VideoCapture capture(0);	// 从摄像头读入视频
+	if (!capture.isOpened())	// 判断文件是否正确打开
+	{
+		std::cout << "video not exist";
+		return -1;
+	}
+
+	Mat edges;
+	while (1) // 循环显示每一帧
+	{
+		Mat frame;	// 定义一个Mat 变量， 用于存储每一帧的图像
+		capture >> frame;	// 读取当前帧到 Mat 变量中 
+		cvtColor(frame, edges, COLOR_BGR2GRAY); // 转换 BGR 图为灰度图
+		// 使用 3x3 内核降噪 2x3+1=7
+		blur(edges, edges, Size(7, 7)); // 进行模糊
+		// 进行 canny 边缘检测并显示
+		Canny(edges, edges, 0, 30, 3);
+		imshow("边缘检测并模糊后的视频", edges);	// 显示当前帧 
+		waitKey(1000);	// 延时 1000 ms
+	}
+	capture.release();	//释放资源
+	return 0;
+}
